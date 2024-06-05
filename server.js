@@ -3,17 +3,21 @@ const puppeteer = require("puppeteer");
 const path = require("path");
 
 const app = express();
-const port = process.env.PORT || 3000; // změna zde
+const port = process.env.PORT || 3000;
 
-// Servírování statických souborů
-app.use(express.static(path.join(__dirname)));
+// Nastavení hlavní cesty
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
+});
 
+// Endpoint pro vyhledávání na Google
 app.get("/search", async (req, res) => {
   const query = req.query.query;
   const results = await getGoogleResults(query);
   res.json(results);
 });
 
+// Funkce pro získání výsledků z Google
 async function getGoogleResults(query) {
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
@@ -36,6 +40,7 @@ async function getGoogleResults(query) {
   return results;
 }
 
+// Spuštění serveru
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
+  console.log(`Server běží na adrese http://localhost:${port}`);
 });
