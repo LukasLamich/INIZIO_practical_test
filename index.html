@@ -4,14 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vyhledávání na Google</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="/styles.css" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   </head>
+
   <body>
     <img
       alt="Google"
       src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
     />
+
     <form id="searchForm">
       <input
         type="text"
@@ -23,6 +25,7 @@
       <button type="submit">Vyhledat</button>
     </form>
     <pre id="results"></pre>
+
     <script>
       document
         .getElementById("searchForm")
