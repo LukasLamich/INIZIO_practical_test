@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vyhledávání na Google</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <img
+      alt="Google"
+      src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+    />
+
+    <form id="searchForm">
+      <input
+        type="text"
+        id="query"
+        name="query"
+        placeholder="Zadejte klíčové slovo"
+        required
+      />
+      <button type="submit">Vyhledat</button>
+    </form>
+    <pre id="results"></pre>
+
+    <script>
+      document
+        .getElementById("searchForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const query = document.getElementById("query").value;
+          fetch(`/search?query=${encodeURIComponent(query)}`)
+            .then((response) => response.json())
+            .then((data) => {
+              document.getElementById("results").textContent = JSON.stringify(
+                data,
+                null,
+                2
+              );
+            })
+            .catch((error) => console.error("Error fetching data:", error));
+        });
+    </script>
+  </body>
+</html>
