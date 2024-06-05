@@ -5,12 +5,12 @@ const path = require("path");
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Nastavení cesty pro statické soubory (CSS a favicon)
-app.use(express.static(path.join(__dirname)));
+// Nastavení cesty pro statické soubory
+app.use(express.static(path.join(__dirname, "public")));
 
 // Nastavení hlavní cesty
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "index.html"));
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // Endpoint pro vyhledávání na Google
