@@ -27,8 +27,8 @@ app.get("/search", async (req, res) => {
 
 // Funkce pro získání výsledků z Google pomocí Google Search API
 async function getGoogleResults(query) {
-  const apiKey = "YOUR_GOOGLE_API_KEY";
-  const cx = "YOUR_CUSTOM_SEARCH_ENGINE_ID";
+  const apiKey = "AIzaSyBdQ-OjuHznbDayCCOFvXWpo9WnNN_gC0g";
+  const cx = "b4f1019dc71654ead";
   const url = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(
     query
   )}&cx=${cx}&key=${apiKey}`;
