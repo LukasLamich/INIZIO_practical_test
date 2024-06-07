@@ -3,6 +3,17 @@ const query = document.getElementById("query");
 const resultsContainer = document.getElementById("results-container");
 const downloadBtn = document.getElementById("download-btn");
 
+const downloadJSON = (data) => {
+  const dataStr =
+    "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
+  const downloadAnchor = document.createElement("a");
+  downloadAnchor.setAttribute("href", dataStr);
+  downloadAnchor.setAttribute("download", "results.json");
+  document.body.appendChild(downloadAnchor);
+  downloadAnchor.click();
+  downloadAnchor.remove();
+};
+
 searchForm.addEventListener("submit", (event) => {
   event.preventDefault();
   resultsContainer.innerHTML = null;
@@ -15,7 +26,7 @@ searchForm.addEventListener("submit", (event) => {
       } else {
         downloadBtn.style.display = "none";
       }
-      
+
       data.forEach((item) => {
         const listItem = document.createElement("li");
         listItem.classList.add("result-item");
@@ -33,13 +44,3 @@ searchForm.addEventListener("submit", (event) => {
       downloadBtn.style.display = "none";
     });
 });
-
-function downloadJSON(data) {
-  const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
-  const downloadAnchor = document.createElement("a");
-  downloadAnchor.setAttribute("href", dataStr);
-  downloadAnchor.setAttribute("download", "results.json");
-  document.body.appendChild(downloadAnchor);
-  downloadAnchor.click();
-  downloadAnchor.remove();
-}

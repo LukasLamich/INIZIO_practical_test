@@ -4,13 +4,10 @@ body {
   box-sizing: border-box;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   margin: 0;
   font-family: Arial, sans-serif;
-}
-
-.logo {
-  margin-top: 88px;
+  padding: 80px;
 }
 
 h1 {
